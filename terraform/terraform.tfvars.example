@@ -1,0 +1,36 @@
+# ─────────────────────────────────────────────────────────────────────
+# 이 파일을 terraform.tfvars 로 복사한 뒤, 본인 값만 채우면 됩니다.
+#   cp terraform.tfvars.example terraform.tfvars
+# terraform.tfvars 는 .gitignore 에 걸려 있으니 커밋되지 않습니다.
+# ─────────────────────────────────────────────────────────────────────
+
+# [필수] 본인 Compartment(보통 Tenancy) OCID
+compartment_id = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [필수] 본인 계정의 Home Region. Always Free 는 여기에만 생기고, 영구 고정입니다.
+#        예: us-ashburn-1 / us-phoenix-1 / us-sanjose-1
+region = "us-ashburn-1"
+
+# [필수] Tailscale auth key (ephemeral · reusable · pre-authorized · tagged 권장)
+#        파일에 두기 싫으면 이 줄을 지우고 아래처럼 환경변수로 주입하세요.
+#          export TF_VAR_ts_authkey='tskey-auth-...'
+ts_authkey = "tskey-auth-xxxxxxxxxxxx"
+
+# [권장] 관리용 SSH 접속을 허용할 IP. 본인 IP/32 로 좁히는 것을 권장합니다.
+#        기본값(0.0.0.0/0)은 전체 허용이라, 그대로 두지 마세요.
+ssh_allowed_cidr = "203.0.113.7/32"
+
+# ─────────────────────────────────────────────────────────────────────
+# 아래는 기본값으로 두어도 됩니다. 필요할 때만 주석을 풀어 바꾸세요.
+# ─────────────────────────────────────────────────────────────────────
+
+# ~/.oci/config 에 프로필이 여러 개면 이름 지정 (단일 계정은 DEFAULT)
+# config_file_profile = "DEFAULT"
+
+# SSH 공개키 경로 (미리 만들어 두세요: ssh-keygen -t ed25519 -f ~/.ssh/oci-vpn)
+# ssh_public_key_path = "~/.ssh/oci-vpn.pub"
+
+# 성능 좋은 ARM 을 시도하려면 (인기 리전에선 Out of host capacity 가능):
+# shape         = "VM.Standard.A1.Flex"
+# ocpus         = 1
+# memory_in_gbs = 6

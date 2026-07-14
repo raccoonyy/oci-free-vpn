@@ -1,0 +1,20 @@
+# Terraform state & working dirs
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Real variable values & secrets (never commit)
+*.tfvars
+!*.tfvars.example
+*.auto.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# SSH keys, if placed here by mistake
+*.pem
+id_*
+*.pub
