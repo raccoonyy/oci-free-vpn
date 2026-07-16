@@ -20,7 +20,10 @@ variable "region" {
 variable "ts_authkey" {
   description = <<-EOT
     Tailscale auth key used once at first boot to join the tailnet.
-    Use an ephemeral, pre-authorized, reusable key (tag it, e.g. tag:exit-node):
+    Use a reusable, pre-authorized key, tagged (e.g. tag:exit-node). For a
+    permanent exit node, prefer a NON-ephemeral key: ephemeral nodes get
+    removed from the tailnet after they go offline, so a longer reboot/outage
+    can drop the node and break auto-reconnect.
     https://login.tailscale.com/admin/settings/keys
     Never commit it: set it in terraform.tfvars (gitignored) or via
     `export TF_VAR_ts_authkey=tskey-auth-...`.

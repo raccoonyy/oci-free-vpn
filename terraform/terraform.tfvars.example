@@ -11,7 +11,9 @@ compartment_id = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 #        예: us-ashburn-1 / us-phoenix-1 / us-sanjose-1
 region = "us-ashburn-1"
 
-# [필수] Tailscale auth key (ephemeral · reusable · pre-authorized · tagged 권장)
+# [필수] Tailscale auth key (reusable · pre-authorized · tagged 권장)
+#        상시 exit node라면 non-ephemeral(영구) 키를 쓰세요. ephemeral 키는
+#        노드가 오프라인이 길어지면 tailnet에서 제거돼 재부팅 자동연결이 깨질 수 있습니다.
 #        파일에 두기 싫으면 이 줄을 지우고 아래처럼 환경변수로 주입하세요.
 #          export TF_VAR_ts_authkey='tskey-auth-...'
 ts_authkey = "tskey-auth-xxxxxxxxxxxx"

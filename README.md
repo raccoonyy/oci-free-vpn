@@ -20,7 +20,9 @@ Oracle Cloud **Always Free** 인스턴스에 **Tailscale exit node**를 올려, 
    ```bash
    ssh-keygen -t ed25519 -f ~/.ssh/oci-vpn -C oci-vpn
    ```
-4. **Tailscale auth key** — ephemeral · reusable · pre-authorized · tagged(`tag:exit-node`) 권장.
+4. **Tailscale auth key** — reusable · pre-authorized · tagged(`tag:exit-node`) 권장.
+   상시 노드이므로 **non-ephemeral(영구) 키**를 쓰세요. ephemeral 키는 노드가
+   오프라인이 길어지면 tailnet에서 제거돼, 재부팅 후 자동연결이 깨질 수 있습니다.
    https://login.tailscale.com/admin/settings/keys
 
 ## 설정 (여기만 채우면 됩니다)
